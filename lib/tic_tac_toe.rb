@@ -7,7 +7,7 @@ WIN_COMBINATIONS = [
       [2,5,8],
       [0,4,8],
       [6,4,2]
-    ]
+    ].freeze
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " " ]
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
@@ -23,7 +23,6 @@ end
 
 def move(board, position, char)
   board[position] = char
-  char = "X" || "O"
 end
 
 def position_taken?(board,index)
@@ -31,19 +30,7 @@ def position_taken?(board,index)
 end  
 
 def valid_move?(board,index)
-  if !position_taken?(board,index) == true && index.between?(0,8) == true
-    return true
-  else
-    return false
-  end
-end
-
-def valid_move?(board,index)
-  if !position_taken?(board,index) == true && index.between?(0,8) == true
-    return true
-  else
-    return false
-  end
+  !position_taken?(board,index) && index.between?(0,8)
 end
 
 def turn(board)
@@ -59,13 +46,9 @@ def turn(board)
 end
 
 def turn_count(board)
-  turns = 0
-  board.each do |element|
-  if element == "X" || element == "O"
-    turns += 1
+  board.count do |element|
+    element == "X" || element == "O"
   end
-  end
-  turns
 end
 
 def current_player(board)
