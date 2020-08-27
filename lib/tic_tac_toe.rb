@@ -73,7 +73,6 @@ end
   
 def draw?(board)
   !won?(board) && full?(board)
-  end
 end 
 
 def over?(board)
@@ -81,8 +80,7 @@ def over?(board)
 end
 
 def winner(board)
-  if won?(board)
-    combo = won?(board)
+  if combo = won?(board)
     winning_index = combo[0]
   return board[winning_index]
   end
