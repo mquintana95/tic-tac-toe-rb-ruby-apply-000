@@ -111,11 +111,11 @@ def winner(board)
 end
   
 def play(board)
-  until over?(board)
+  until over?(board) || !won?(board)
     turn(board)
   end
   if won?(board)
-    "Congratulations #{winning_index} !"
+    "Congratulations !"
   elsif draw?(board)
     puts "Cat's Game!"
   end
